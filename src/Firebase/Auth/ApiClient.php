@@ -19,7 +19,7 @@ class ApiClient
     /**
      * @var ClientInterface
      */
-    private $client;
+    public $client;
 
     public function __construct(ClientInterface $client)
     {
@@ -110,6 +110,22 @@ class ApiClient
             'idToken' => (string) $user->getIdToken(),
             'email' => $newEmail,
             'returnSecureToken' => true,
+        ]);
+    }
+
+    public function changeUserDisplayName(User $user, string $newName): ResponseInterface
+    {
+        return $this->request('setAccountInfo', [
+            'idToken' => (string) $user->getIdToken(),
+            'displayName' => $newName,
+        ]);
+    }
+    
+    public function changeUserPhotoUrl(User $user, string $newPhotoUrl): ResponseInterface
+    {
+        return $this->request('setAccountInfo', [
+            'idToken' => (string) $user->getIdToken(),
+            'photoUrl' => $newPhotoUrl,
         ]);
     }
 

@@ -81,6 +81,16 @@ class Auth
         return $this->convertResponseToUser($response);
     }
 
+    public function changeUserDisplayName(User $user, string $newName)
+    {
+        $this->client->changeUserDisplayName($user, $newName);
+    }
+    
+    public function changeUserPhotoUrl(User $user, string $newPhotoUrl)
+    {
+        $this->client->changeUserPhotoUrl($user, $newPhotoUrl);
+    }
+
     public function deleteUser(User $user)
     {
         $this->client->deleteUser($user);
