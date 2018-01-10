@@ -91,6 +91,11 @@ class Auth
         $this->client->changeUserPhotoUrl($user, $newPhotoUrl);
     }
 
+    public function changeUser(User $user, array $data)
+    {
+        $response = $this->client->changeUser($user, $data);
+    }
+
     public function deleteUser(User $user)
     {
         $this->client->deleteUser($user);
